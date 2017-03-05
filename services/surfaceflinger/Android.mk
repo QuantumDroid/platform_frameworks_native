@@ -163,6 +163,9 @@ ifeq ($(TARGET_USES_QCOM_BSP), true)
   LOCAL_SHARED_LIBRARIES += libqdutils
   LOCAL_SHARED_LIBRARIES += libqdMetaData
   LOCAL_CFLAGS += -DQTI_BSP
+  ifeq ($(call is-board-platform-in-list, msm8996), true)
+    LOCAL_CFLAGS += -DUSE_COLOR_METADATA
+  endif
   ifneq ($(TARGET_USES_HWC2),true)
   LOCAL_SRC_FILES += \
     ExSurfaceFlinger/ExLayer.cpp \
